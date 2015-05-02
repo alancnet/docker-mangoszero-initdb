@@ -5,7 +5,7 @@ ENV DEBIAN_FRONTEND noninteractive
 VOLUME ["/opt/mangos/etc", "/opt/mangos/data", "/opt/mangos/logs"]
 
 RUN apt-get update && \
-    apt-get install mysql-client && \
+    apt-get install -y mysql-client && \
     rm -rf /var/lib/apt/lists/*
 
 ADD mangoszero-initdb.sh /mangoszero-initdb.sh
