@@ -4,7 +4,7 @@ MYSQLPASS=$1
 REALMIP=$2
 
 #Create appropriate database
-mysql -u root -p $MYSQLPASS -h mysql << EOF
+mysql -u root -p$MYSQLPASS -h mysql << EOF
 CREATE DATABASE mangos_characters;
 CREATE DATABASE mangos_realm;
 CREATE DATABASE mangos_scripts;
@@ -15,6 +15,7 @@ rm -rf /tmp/*
 cd /tmp
 git clone https://bitbucket.org/mangoszero/content.git
 cd content
+chmod +x mysql_import.sh
 
 #Populate mysql_info.sh
 echo "USER=root" > mysql_info.sh
@@ -31,12 +32,12 @@ echo '[ ! -z "${HOST}" ] && OPTS="${OPTS} -h${HOST}"' >> mysql_info.sh
 echo '[ ! -z "${SOCK}" ] && OPTS="${OPTS} -S${SOCK}"' >> mysql_info.sh
 
 #Run import
-/bin/sh mysql_import.sh
+./mysql_import.sh
 
 cd
 
 #Update to your IP
-/bin/sh /update-realm.sh $MYSQLPASS $REALMIP
+./update-realm.sh $MYSQLPASS $REALMIP
 
 #Cleanup
 rm -rf /tmp/content
