@@ -1,11 +1,7 @@
 #!/bin/bash
 
-read -p 'IP Address of your realm: ' -r
-realmAddress=$REPLY
-
-
-mysql -u root -p -h mysql << EOF
+mysql -u root -p $1 -h mysql << EOF
 UPDATE 'realmlist'
-SET `address` = "$realmAddress"
+SET `address` = "$2"
 WHERE `realmlist`.`id` = 1;
 EOF
