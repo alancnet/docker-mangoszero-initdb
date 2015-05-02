@@ -1,12 +1,10 @@
 #!/bin/bash
 
-read -p 'IP Address of your realm (Docker Host IP): ' -r
-REALMIP=$REPLY
-read -p 'MySQL Root Password: ' -r
-MYSQLPASS=$REPLY
+MYSQLPASS=$1
+REALMIP=$2
 
 #Create appropriate database
-mysql -u root -p $MYSQLPASS -h mysql << 
+mysql -u root -p $MYSQLPASS -h mysql << EOF
 CREATE DATABASE mangos_characters;
 CREATE DATABASE mangos_realm;
 CREATE DATABASE mangos_scripts;
