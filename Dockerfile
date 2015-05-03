@@ -5,7 +5,6 @@ ENV DEBIAN_FRONTEND noninteractive
 VOLUME ["/opt/mangos/etc", "/opt/mangos/data", "/opt/mangos/logs"]
 
 ADD mangoszero-initdb.sh /mangoszero-initdb.sh
-ADD update-realm.sh /update-realm.sh
 
 RUN apt-get update && \
     apt-get install -y mysql-client git && \
