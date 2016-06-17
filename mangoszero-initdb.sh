@@ -43,7 +43,7 @@ echo '[ ! -z "${SOCK}" ] && OPTS="${OPTS} -S${SOCK}"' >> mysql_info.sh
 cd /tmp
 git clone https://bitbucket.org/mangoszero/scripts.git
 cd scripts/sql
-find /tmp/scripts/sql -name *.sql -type f -print0 | xargs -0 sed -i 's/ROW_FORMAT=FIXED//g'
+find /tmp/scripts/sql -name "*.sql" -type f -print0 | xargs -0 sed -i 's/ROW_FORMAT=FIXED//g'
 mysql -u mangos -pmangos -h mysql scriptdev2 < scriptdev2_script_full.sql
 
 #Update to your IP
